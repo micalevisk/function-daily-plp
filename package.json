@@ -1,0 +1,19 @@
+{
+  "name": "get-daily-plp",
+  "version": "1.0.0",
+  "description": "verificar a última postagem (a cada 10 minutos) do site de PLP 2018/2 do Prof Marcos",
+  "main": "get-daily-plp.js",
+  "scripts": {
+    "wt:serve": "wt serve ./get-daily-plp.js --secrets-file ./.env --hostname localhost --port 1234",
+    "wt:create": "wt create -b get-daily-plp.js --secrets-file ./.env",
+    "wt:cronjob": "wt cron create --schedule \"*/10 * * * *\" -b get-daily-plp.js --secrets-file ./.env",
+    "wt:logs": "wt logs",
+    "wt:update": "wt update get-daily-plp -b get-daily-plp.js"
+  },
+  "author": "Micael Levi <mllc@icomp.ufam.edu.br> (micalevisk.github.io)",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "node-fetch": "^2.2.0"
+  }
+}
