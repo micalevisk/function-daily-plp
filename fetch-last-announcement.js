@@ -1,12 +1,7 @@
 const fetch = require('node-fetch')
 const cheerio= require('cheerio')
 const _ = require('./utils')
-
-//#region configs
-const SITES_GOOGLE_BASE_URL = 'https://sites.google.com'
-const SITES_GOOGLE_CLASSROOM_NEWS = 'classroom-news'
-const getURLToProjectName = projectName => `${SITES_GOOGLE_BASE_URL}/site/${projectName}`
-//#endregion
+const sitesGoogleAPI = require('./sitesGoogleAPI')
 
 //#region handlers
 const titleHandler = {
