@@ -75,14 +75,20 @@ function scrapeLastAnnouncement(baseURL, body) {
 
 /**
  *
- * @param {string} projectName
+ * @param {string} page
  * @returns {Promise<{title:string, link:string, publish_date:string, updated_date?:string}>}
  */
-function fetchLastAnnouncement(projectName) {
-  return fetch( getURLToProjectName(projectName) + '/' + SITES_GOOGLE_CLASSROOM_NEWS )
+function fetchLastPost(page) {
+  return fetch(page)
     .then(res => res.text())
-    .then(body => scrapeLastAnnouncement(SITES_GOOGLE_BASE_URL, body))
+    .then(body => scrapeLastAnnouncement(sitesGoogleAPI.baseURL, body))
     .catch(err => err.message)
 }
 
-module.exports = fetchLastAnnouncement
+const fetchLastAnnouncement = projectName => fetchLastPost( sitesGoogleAPI.classroomNews(projectName) )
+const fetchLastAssignment = projectName => fetchLastPost( sitesGoogleAPI.assignments(projectName) )
+
+module.exports = {
+  fetchLastAnnouncement,
+  fetchLastAssignment,
+}
