@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const fetchLastAnnouncement = require('./fetch-last-announcement');
+const { fetchLastAnnouncement } = require('./fetchLastPost');
 
 function sendMessageToTelegram(token, chatId, text, parseMode = 'HTML') {
   const url = `https://api.telegram.org/bot${token}/sendMessage?parse_mode=${parseMode}&chat_id=${chatId}&text=${text}`;
