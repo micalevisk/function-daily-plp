@@ -55,6 +55,8 @@ function getLastAnnouncement(ctx, cb) {
   fetchLastAnnouncement(GPROJECT_NAME)
     .then((dadosUltimoAnuncio) => {
       const {title, link, publish_date, updated_date} = dadosUltimoAnuncio;
+      if (!title || !link) throw Error('erro no scrape(?)');
+
       const msgFormatada = (updated_date)
         ? `<b>${publish_date}</b> ~ <code>${updated_date}</code>\n<a href="${link}">${title}</a>`
         : `<b>${publish_date}</b>\n<a href="${link}">${title}</a>`;
