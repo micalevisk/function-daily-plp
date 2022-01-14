@@ -1,5 +1,5 @@
 // TODO: refatorar tudo
-
+asdadad
 function compareObjs(o1, o2) {
   for (let k in o2)
     if (o1[k] !== o2[k]) return false
